@@ -1,0 +1,12 @@
+{
+  "concepts": {
+    "spa_auth": {
+      "summary": "React SPA should use OIDC Authorization Code Flow with PKCE.",
+      "details": [
+        "Avoid storing long-lived tokens in localStorage when possible.",
+        "Prefer short-lived access tokens and refresh via secure flows.",
+        "Use an API gateway / BFF if you need stronger token handling."
+      ]
+    }
+  }
+}

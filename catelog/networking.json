@@ -1,0 +1,20 @@
+{
+  "concepts": {
+    "segmentation": {
+      "summary": "Separate systems into zones (public, private-app, private-data) to reduce blast radius.",
+      "details": [
+        "Public subnet: only internet-facing entrypoints (ALB, NAT GW if required).",
+        "Private app subnet: application services not directly accessible from the internet.",
+        "Private data subnet: databases and sensitive services; tight security groups and no outbound by default if possible."
+      ]
+    },
+    "routes": {
+      "summary": "Route tables determine how traffic moves between subnets, IGW, NAT, and peering links.",
+      "details": [
+        "Public route table typically has 0.0.0.0/0 -> Internet Gateway.",
+        "Private route table typically has 0.0.0.0/0 -> NAT Gateway (if egress needed).",
+        "Data subnets often have no default route to the internet (egress restricted)."
+      ]
+    }
+  }
+}

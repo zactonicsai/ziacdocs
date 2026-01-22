@@ -1,0 +1,34 @@
+{
+  "resourceTypes": {
+    "aws_vpc": {
+      "category": "Networking",
+      "summary": "Creates a Virtual Private Cloud (VPC) to isolate resources in a private network boundary.",
+      "keyConcerns": ["CIDR planning", "segmentation", "logging", "least privilege routing"]
+    },
+    "aws_subnet": {
+      "category": "Networking",
+      "summary": "Creates a subnet inside a VPC. Used for public/private segmentation and AZ placement.",
+      "keyConcerns": ["public vs private", "route tables", "NAT design", "AZ redundancy"]
+    },
+    "aws_security_group": {
+      "category": "Security",
+      "summary": "Defines stateful firewall rules for inbound/outbound traffic.",
+      "keyConcerns": ["least privilege ports", "no 0.0.0.0/0 on admin ports", "egress control", "tagging/ownership"]
+    },
+    "aws_lb": {
+      "category": "Networking",
+      "summary": "Creates an Application/Network Load Balancer to distribute traffic across targets.",
+      "keyConcerns": ["TLS", "WAF", "private vs public", "health checks"]
+    },
+    "aws_ecs_service": {
+      "category": "Compute",
+      "summary": "Runs and maintains a desired count of containers on ECS (often behind an ALB).",
+      "keyConcerns": ["IAM task roles", "private subnets", "secrets", "autoscaling"]
+    },
+    "aws_rds_instance": {
+      "category": "Data",
+      "summary": "Provisions a managed relational database instance.",
+      "keyConcerns": ["private subnet", "encryption", "backups", "rotation", "no public access"]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "concepts": {
+    "authn_authz": {
+      "summary": "Authentication verifies identity; authorization enforces access control.",
+      "details": [
+        "Prefer OIDC/OAuth2 with short-lived tokens for services.",
+        "Use a centralized IdP (e.g., Keycloak, Cognito) for users and service-to-service identities.",
+        "Enforce least privilege IAM and app roles; log access decisions."
+      ]
+    },
+    "secrets": {
+      "summary": "Secrets must not be stored in git; use a secrets manager and rotate credentials.",
+      "details": [
+        "Use AWS Secrets Manager / SSM Parameter Store with KMS encryption.",
+        "Inject secrets at runtime (task env or sidecar), not baked into images.",
+        "Rotate DB passwords and API keys; audit access."
+      ]
+    },
+    "logging_monitoring": {
+      "summary": "Centralize logs/metrics/traces and alert on security and reliability signals.",
+      "details": [
+        "VPC Flow Logs for network visibility.",
+        "CloudTrail for API auditing.",
+        "App logs with request IDs; structured JSON logs when possible."
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "keywords": {
+    "stages": "Defines pipeline phases executed in order (build -> test -> security -> deploy).",
+    "rules": "Controls when jobs run (branch, tag, MR, changes).",
+    "artifacts": "Files passed between jobs (build outputs, reports).",
+    "cache": "Speeds up builds by caching dependencies.",
+    "environment": "Deployment targets with optional URLs and review apps."
+  },
+  "jobPatterns": {
+    "security_scan": {
+      "summary": "Security scanning stage (SAST/Dependency/Secrets/IaC).",
+      "recommendations": [
+        "Fail pipeline on critical findings for protected branches.",
+        "Store reports as artifacts and publish summaries.",
+        "Scan Terraform and container images before deploy."
+      ]
+    }
+  }
+}

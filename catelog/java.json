@@ -1,0 +1,12 @@
+{
+  "concepts": {
+    "spring_security": {
+      "summary": "Common approach: Spring Boot as OAuth2 Resource Server verifying JWTs from an IdP.",
+      "details": [
+        "Validate issuer/audience and enforce scopes/roles.",
+        "Prefer stateless JWT validation; avoid server sessions for APIs unless needed.",
+        "Protect admin endpoints and enable rate-limiting at edge."
+      ]
+    }
+  }
+}

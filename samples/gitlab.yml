@@ -1,0 +1,44 @@
+stages:
+  - build
+  - test
+  - security
+  - deploy
+
+variables:
+  NODE_ENV: "production"
+
+build_web:
+  stage: build
+  image: node:20
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+test_api:
+  stage: test
+  image: maven:3-eclipse-temurin-21
+  script:
+    - mvn -q test
+
+iac_security_scan:
+  stage: security
+  image: alpine:3.19
+  script:
+    - apk add --no-cache curl bash
+    - echo "Run tfsec/checkov here for Terraform scanning"
+    - echo "Run gitleaks here to detect secrets"
+  artifacts:
+    when: always
+    paths:
+      - reports/
+
+deploy_prod:
+  stage: deploy
+  image: alpine:3.19
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script:
+    - echo "Deploy using OIDC to cloud provider (no long-lived keys)"
